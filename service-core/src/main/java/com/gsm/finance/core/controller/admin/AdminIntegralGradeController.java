@@ -1,6 +1,9 @@
 package com.gsm.finance.core.controller.admin;
 
+import com.gsm.common.exception.Assert;
+import com.gsm.common.exception.BusinessException;
 import com.gsm.common.result.R;
+import com.gsm.common.result.ResponseEnum;
 import com.gsm.finance.core.pojo.entity.IntegralGrade;
 import com.gsm.finance.core.service.IntegralGradeService;
 import io.swagger.annotations.ApiOperation;
@@ -45,13 +48,23 @@ public class AdminIntegralGradeController {
     public R save(
             @ApiParam(value = "积分等级对象", required = true)
             @RequestBody IntegralGrade integralGrade) {
+
+        //如果借款额度为空就手动抛出一个自定义的异常！
+        if (integralGrade.getBorrowAmount().intValue() == 0) {
+            //BORROW_AMOUNT_NULL_ERROR(-201, "借款额度不能为空"),
+            throw new BusinessException(ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
+        }
+        Assert.notNull(integralGrade.getBorrowAmount(), ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
+
         boolean result = integralGradeService.save(integralGrade);
+
         if (result) {
             return R.ok().message("保存成功");
         } else {
             return R.error().message("保存失败");
         }
     }
+
 
     @ApiOperation("根据id获取积分等级")
     @GetMapping("/get/{id}")
