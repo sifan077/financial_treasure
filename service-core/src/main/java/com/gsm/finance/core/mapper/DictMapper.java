@@ -1,7 +1,10 @@
 package com.gsm.finance.core.mapper;
 
+import com.gsm.finance.core.dto.ExcelDictDTO;
 import com.gsm.finance.core.pojo.entity.Dict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2023-09-18
  */
 public interface DictMapper extends BaseMapper<Dict> {
-
+    void insertBatch(List<ExcelDictDTO> list);
 }
