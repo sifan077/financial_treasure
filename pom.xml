@@ -12,6 +12,7 @@
         <module>finance-common</module>
         <module>service-base</module>
         <module>service-core</module>
+        <module>alibaba-easyexcel</module>
     </modules>
 
     <parent>
