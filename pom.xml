@@ -14,6 +14,8 @@
         <module>service-core</module>
         <module>alibaba-easyexcel</module>
         <module>service-sms</module>
+        <module>aliyun-oss</module>
+        <module>service-oss</module>
     </modules>
 
     <parent>

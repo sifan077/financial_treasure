@@ -1,3 +1,5 @@
+package com.gsm.finance.oss;
+
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
